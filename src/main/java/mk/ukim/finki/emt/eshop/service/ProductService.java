@@ -8,6 +8,8 @@ import java.util.Optional;
 
 public interface ProductService {
 
+    void refreshMaterializedView();
+
     List<Product> findAll();
 
     Optional<Product> findById(Long id);

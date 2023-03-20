@@ -2,6 +2,7 @@ package mk.ukim.finki.emt.eshop.repository;
 
 import mk.ukim.finki.emt.eshop.model.User;
 import mk.ukim.finki.emt.eshop.model.enumerations.Role;
+import mk.ukim.finki.emt.eshop.model.exceptions.UserNotFoundException;
 import mk.ukim.finki.emt.eshop.model.projections.UserProjection;
 import org.junit.Assert;
 import org.junit.Test;
@@ -45,5 +46,20 @@ public class UserRepositoryTest {
         Assert.assertEquals("user", userProjection.getUsername());
         Assert.assertEquals("Branka", userProjection.getName());
         Assert.assertEquals("Tasovska Stojcheska", userProjection.getSurname());
+    }
+
+    @Test
+    public void testOptimisticLock() {
+        // Пристапуваат до истиот рекорд од базата на податоци!!!
+        // Овде се нарушува интегритетот на базата на податоци
+        User user1 = this.userRepository.findByUsername("user").orElseThrow(() -> new UserNotFoundException("user"));
+        User user2 = this.userRepository.findByUsername("user").orElseThrow(() -> new UserNotFoundException("user"));
+
+        user1.setName("user1");
+        user2.setName("user2");
+
+        this.userRepository.save(user1);
+        this.userRepository.save(user2);
+
     }
 }
