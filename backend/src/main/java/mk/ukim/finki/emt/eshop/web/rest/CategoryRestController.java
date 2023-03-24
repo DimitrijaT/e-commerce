@@ -25,3 +25,4 @@ public class CategoryRestController {
         return this.categoryService.listCategories();
     }
 }
+

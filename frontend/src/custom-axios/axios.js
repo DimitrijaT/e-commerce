@@ -8,7 +8,6 @@ const instance = axios.create({
     headers: {
         'Access-Control-Allow-Origin': '*'
     }
-
 })
 
 //We will use this instance for all parts of our React app
