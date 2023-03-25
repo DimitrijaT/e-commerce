@@ -5,7 +5,12 @@ const EShopService = {
         return axios.get("/manufacturers");
     },
     fetchProducts: () => {
-        return axios.get("/products");
+        return axios.get("/products", {
+            params: {
+                size: 5,
+                page: 2
+            }
+        });
     },
     fetchCategories: () => {
         return axios.get("/categories");

@@ -19,36 +19,37 @@ class App extends Component {
     }
 
     render() {
-        return (<Router>
-            <Header/>
-            <main>
-                <header/>
-                <div className="container">
-                    <Routes>
-                        <Route path={"/manufacturers"}
-                               element={<Manufacturers manufacturers={this.state.manufacturers}/>}/>
-                        <Route path={"/categories"}
-                               element={<Categories categories={this.state.categories}/>}/>
-                        <Route path={"/products/add"}
-                               element={<ProductAdd manufacturers={this.state.manufacturers}
-                                                    categories={this.state.categories}
-                                                    onAddProduct={this.addProduct}/>}/>
-                        <Route path={"/products/edit/:id"}
-                               element={<ProductEdit manufacturers={this.state.manufacturers}
-                                                     categories={this.state.categories}
-                                                     onEditProduct={this.editProduct}
-                                                     product={this.state.selectedProduct}/>}/>
-                        <Route path={"/products"}
-                               element={<Products products={this.state.products}
-                                                  onDelete={this.deleteProduct}
-                                                  onEdit={this.getProduct}
-                               />}/>
-                        <Route path={"*"}
-                               element={<Navigate to={"/products"} replace={true}/>}/>
-                    </Routes>
-                </div>
-            </main>
-        </Router>);
+        return (
+            <Router>
+                <Header/>
+                <main>
+                    <header/>
+                    <div className="container">
+                        <Routes>
+                            <Route path={"/manufacturers"}
+                                   element={<Manufacturers manufacturers={this.state.manufacturers}/>}/>
+                            <Route path={"/categories"}
+                                   element={<Categories categories={this.state.categories}/>}/>
+                            <Route path={"/products/add"}
+                                   element={<ProductAdd manufacturers={this.state.manufacturers}
+                                                        categories={this.state.categories}
+                                                        onAddProduct={this.addProduct}/>}/>
+                            <Route path={"/products/edit/:id"}
+                                   element={<ProductEdit manufacturers={this.state.manufacturers}
+                                                         categories={this.state.categories}
+                                                         onEditProduct={this.editProduct}
+                                                         product={this.state.selectedProduct}/>}/>
+                            <Route path={"/products"}
+                                   element={<Products products={this.state.products}
+                                                      onDelete={this.deleteProduct}
+                                                      onEdit={this.getProduct}
+                                   />}/>
+                            <Route path={"*"}
+                                   element={<Navigate to={"/products"} replace={true}/>}/>
+                        </Routes>
+                    </div>
+                </main>
+            </Router>);
     }
 
 
